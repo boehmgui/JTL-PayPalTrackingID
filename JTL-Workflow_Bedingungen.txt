@@ -1,0 +1,1 @@
+-p transaction_id={{ Vorgang.Auftrag.Zahlungen.ErstesObjekt.ExterneTransaktionsID }} tracking_number={{ Vorgang.Pakete.ErstesObjekt.TrackingID }} carrier_name_other={{ Vorgang.Pakete.ErstesObjekt.Versandart.Name }}
