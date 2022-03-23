@@ -1,0 +1,31 @@
+{
+  "tracker_identifiers": [
+    {
+      "transaction_id": "8TJ63119FY6018218",
+      "tracking_number": "123456",
+      "links": [
+        {
+          "href": "https://api-m.sandbox.paypal.com/v1/shipping/trackers/8TJ63119FY6018218-123456",
+          "rel": "self",
+          "method": "GET",
+          "encType": "application/json"
+        },
+        {
+          "href": "https://api-m.sandbox.paypal.com/v1/shipping/trackers/8TJ63119FY6018218-123456",
+          "rel": "replace",
+          "method": "PUT",
+          "encType": "application/json"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "links": [
+    {
+      "href": "https://api-m.sandbox.paypal.com/v1/shipping/trackers-batch",
+      "rel": "self",
+      "method": "POST",
+      "encType": "application/json"
+    }
+  ]
+}
