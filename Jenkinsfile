@@ -40,12 +40,12 @@ pipeline {
             }
             steps {
                     // for Linux
-                    //sh 'docker run --rm -v "\$(pwd):/src" ${IMAGE} -e PYTHONDONTWRITEBYTECODE=1 "python3 -m PyInstaller -F ./src/pp_tracking_id.py"'
-                    
+                    //sh 'docker run --rm -e PYTHONDONTWRITEBYTECODE=1 -v "\$(pwd):/src" ${IMAGE} "python3 -m PyInstaller -F ./src/pp_tracking_id.py"'
+
                     // for Windows
-                    //sh 'docker run --rm -v "\$(pwd):/src" ${IMAGE} -e PYTHONDONTWRITEBYTECODE=1 "pyinstaller -F ./src/pp_tracking_id.py"'
+                    //sh 'docker run --rm -e PYTHONDONTWRITEBYTECODE=1 -v "\$(pwd):/src" ${IMAGE} "pyinstaller -F ./src/pp_tracking_id.py"'
                     // should work for Windows _and_ Linux
-                    sh 'docker run -v "\$(pwd):/src" ${IMAGE} -e PYTHONDONTWRITEBYTECODE=1  "pyinstaller --onefile --noconsole /src/pp_tracking_id.py"'
+                    sh 'docker run  --rm -e PYTHONDONTWRITEBYTECODE=1 -v "\$(pwd):/src" ${IMAGE} "pyinstaller --onefile --noconsole ./src/pp_tracking_id.py"'
 
                 }
             post {
