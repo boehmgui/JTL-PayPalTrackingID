@@ -20,10 +20,47 @@ Folgende Dateien wmüssen heruntergeladen und auf der lokalen HD in einem gemein
 - requirements.txt
 
 ## Konfigurationsdatei
-- Generienren der Zugansgdaten für PayPals REST API gemäß Beschreibung: https://developer.paypal.com/api/rest/#link-getcredentials
-- Umbenennen von ```config.yaml.example``` in ```config.yaml```
-- ```CLIENT_ID``` und ```SECRET``` von der PayPal Seite entsprechend SandBox oder live Zugang in der Yaml Datei unter 
-  ```CredentialsSandBox``` respektive ```CredentialsLive``` eintragen
+###config.yaml
+Die Datei config.yaml muss im gleichen Verueichnis wie das Skript (.py oder .exe) liegen.
+
+```
+# Soll die Live API oder Sandbox AP benutzt werden?
+# True -> Live API
+# False -> Sandbox
+LiveModus: True
+
+# nur auf Anforderung ändern
+Debug: False
+
+# PayPal API Dokumentation:
+# https://developer.paypal.com/api/tracking/v1/
+SandBoxAPI:
+  BaseUrl: 'https://api-m.sandbox.paypal.com'
+  EndPoint_Token: '/v1/oauth2/token'
+  EndPoint_TrackersBatch: '/v1/shipping/trackers-batch'
+
+LiveAPI:
+  BaseUrl: 'https://api-m.paypal.com'
+  EndPoint_Token: '/v1/oauth2/token'
+  EndPoint_TrackersBatch: '/v1/shipping/trackers-batch'
+
+
+```
+
+###Zugangsdaten
+- Generieren der Zugansgdaten für PayPals REST API gemäß Beschreibung: https://developer.paypal.com/api/rest/#link-getcredentials
+
+Die so erstellten Zugangsdaten dann in folgende zu erstellende Dateien eingetragen:
+- PayPals Live System: ```.env.production```
+- PayPals Sandbox: ```.env.sanbox```
+Beispiel
+```
+# API Zugangsdaten wie hier beschrieben generieren
+# https://developer.paypal.com/api/rest/#link-getcredentials
+Client_ID=AaNSfvjN3aV3rTaEd2d0n51foIzhbmnlkrmuw3zk0oqFEFjWQ72jp0Jy3EzSuev5LCoyzYyxbl9ikmPOo
+Secret=EGnt5uUA1TB0Mw43yWPtrgsGcUghgn76fd9DId5i_kgdSYJ8Ef1qQ0Zxti00U4v7mTvqFIwKuuhkmPK9m-
+```
+Diese .env.* Dateien müssen im gleichen Verueichnis wie das Skript (.py oder .exe) liegen.
 
 ## benötigte Python Module (nicht notwendig, wenn Windows .exe verwendet wird)
 Installieren der Python Module
@@ -55,5 +92,5 @@ python3 pp_tracking_id.py -p transaction_id=<pp Transaktionscode> tracking_numbe
 - ```carrier_other_name```: alternativer Carrier Name → nur wenn Carrier auf ```OTHER``` gesetzt war 
 
 ## Fehler
-Sollte bem Setzen des Sendungsstatus ei fehler auftreten, wird für den entsprechende PayPal TransaktionsCode ein 
+Sollte bem Setzen des Sendungsstatus ein fehler auftreten, wird für den entsprechenden PayPal TransaktionsCode ein 
 Fehlerbereicht in das Verzeichnis ```./failed-trasactions``` geschrieben

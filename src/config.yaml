@@ -1,0 +1,20 @@
+# Soll die Live API oder Sandbox AP benutzt werden?
+# True -> Live API
+# False -> Sandbox
+LiveModus: True
+
+# nur auf Anforderung ändern
+Debug: False
+
+# PayPal API Dokumentation:
+# https://developer.paypal.com/api/tracking/v1/
+SandBoxAPI:
+  BaseUrl: 'https://api-m.sandbox.paypal.com'
+  EndPoint_Token: '/v1/oauth2/token'
+  EndPoint_TrackersBatch: '/v1/shipping/trackers-batch'
+
+LiveAPI:
+  BaseUrl: 'https://api-m.paypal.com'
+  EndPoint_Token: '/v1/oauth2/token'
+  EndPoint_TrackersBatch: '/v1/shipping/trackers-batch'
+

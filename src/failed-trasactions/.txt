@@ -1,2 +1,0 @@
-Errormessage: RESOURCE_NOT_FOUND: The specified resource does not exist - [{'field': '/trackers/1/transaction_id', 'value': '', 'location': 'body', 'issue': 'INVALID_TRANSACTION_ID', 'description': 'The PayPal transaction id is invalid'}]
-Errormessage: RESOURCE_NOT_FOUND: The specified resource does not exist - [{'field': '/trackers/1/transaction_id', 'value': '', 'location': 'body', 'issue': 'INVALID_TRANSACTION_ID', 'description': 'The PayPal transaction id is invalid'}]

@@ -11,7 +11,7 @@ __projectname__ = "PayPal-Tracking-ID"
 __filename__ = "pp_tracking_id.py"
 __credits__ = [""]
 __license__ = "see LICENSE file"
-__version__ = "0.0.2"
+__version__ = "0.1.0"
 __maintainer__ = "Guido Boehm"
 __email__ = "olb@family-boehm.de"
 __status__ = "Prototype"
@@ -36,6 +36,7 @@ import argparse
 import sys
 import yaml
 
+from dotenv import dotenv_values
 from pathlib import Path
 
 
@@ -72,7 +73,14 @@ def main(args=None):
         config = yaml.full_load(file)
 
     api = 'LiveAPI' if config['LiveModus'] else 'SandBoxAPI'
-    credentials = 'CredentialsLive' if config['LiveModus'] else 'CredentialsSandBox'
+    if config['LiveModus']:
+        credentials = {**dotenv_values(".env.productionn")}
+    else:
+        credentials = {**dotenv_values(".env.sandbox")}
+
+    if not credentials:
+        print('.env file with credentials not found - please refer to REEADME.md for further information')
+        sys.exit(1)
 
     PayPalAPI.baseurl = config[api]['BaseUrl']
     PayPalAPI.debug = config['Debug']
@@ -114,7 +122,7 @@ if __name__ == "__main__":
 
     else:
         arg_parser.print_help()
-        sys.exit()
+        sys.exit(1)
     input_args['shipping_details'] = usr_input.parameters
 
     main(input_args)
