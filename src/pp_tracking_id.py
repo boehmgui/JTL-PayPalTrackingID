@@ -11,7 +11,7 @@ __projectname__ = "PayPal-Tracking-ID"
 __filename__ = "pp_tracking_id.py"
 __credits__ = [""]
 __license__ = "see LICENSE file"
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __maintainer__ = "Guido Boehm"
 __email__ = "olb@family-boehm.de"
 __status__ = "Prototype"
@@ -74,7 +74,7 @@ def main(args=None):
 
     api = 'LiveAPI' if config['LiveModus'] else 'SandBoxAPI'
     if config['LiveModus']:
-        credentials = {**dotenv_values(".env.productionn")}
+        credentials = {**dotenv_values(".env.production")}
     else:
         credentials = {**dotenv_values(".env.sandbox")}
 
@@ -84,7 +84,7 @@ def main(args=None):
 
     PayPalAPI.baseurl = config[api]['BaseUrl']
     PayPalAPI.debug = config['Debug']
-    paypal = PayPalAPI(client_id=config[credentials]['Client_ID'], secret=config[credentials]['Secret'])
+    paypal = PayPalAPI(client_id=credentials['Client_ID'], secret=credentials['Secret'])
     try:
         paypal.get_token(config[api]['EndPoint_Token'])
     except Exception as err:
