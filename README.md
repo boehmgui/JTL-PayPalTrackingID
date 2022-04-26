@@ -12,15 +12,14 @@ https://developer.paypal.com/api/tracking/v1/#trackers-batch_post
 - wenn keine Sendungsnummer angegeben wird, setzt Paypal den Carrier automatisch auf ```MANUAL```
 
 # Vorbereitungen
-## heruntrerladen des Skripts
+## herunterladen des Skripts
 Folgende Dateien wmüssen heruntergeladen und auf der lokalen HD in einem gemeinsamen Verzeichnis abgelegt werden
 - pp_tracking_id.py
 - pp_tracking_id.exe
-- config.yaml.example
 - requirements.txt
 
 ## Konfigurationsdatei
-###config.yaml
+### config.yaml
 Die Datei config.yaml muss im gleichen Verueichnis wie das Skript (.py oder .exe) liegen.
 
 ```
@@ -47,7 +46,7 @@ LiveAPI:
 
 ```
 
-###Zugangsdaten
+### Zugangsdaten
 - Generieren der Zugansgdaten für PayPals REST API gemäß Beschreibung: https://developer.paypal.com/api/rest/#link-getcredentials
 
 Die so erstellten Zugangsdaten dann in folgende zu erstellende Dateien eingetragen:
@@ -72,13 +71,13 @@ pip install -r requirements.txt
 ### Aufruf als Windows .exe
 
 ```
-pp_tracking_id.exe -p transaction_id=<pp Transaktionscode> tracking_number=<carrier tracking id> carrier_other_name=< anderer carrier name>
+pp_tracking_id.exe -p transaction_id=<pp Transaktionscode> tracking_number=<carrier tracking id> carrier_other_name="< anderer carrier name>"
 ```
 
 ### Aufruf als Python Skript
 
 ```
-python3 pp_tracking_id.py -p transaction_id=<pp Transaktionscode> tracking_number=<carrier tracking id> carrier_other_name=< anderer carrier name>
+python3 pp_tracking_id.py -p transaction_id=<pp Transaktionscode> tracking_number=<carrier tracking id> carrier_other_name="< anderer carrier name>"
 ```
 
 
@@ -90,6 +89,9 @@ python3 pp_tracking_id.py -p transaction_id=<pp Transaktionscode> tracking_numbe
   - Carrier code gemäß https://developer.paypal.com/docs/tracking/reference/carriers/#link-addtrackingapicarriers
   - alternativ: ```OTHER``` - dann Carrier Namen in ```carrier_other_name``` setzen
 - ```carrier_other_name```: alternativer Carrier Name → nur wenn Carrier auf ```OTHER``` gesetzt war 
+
+**Achtung:** sofern übergebene werte Leerzeichen enthalten, zB ```DHL Express``` als ```carrier_other_name```, muss 
+dieser in Hochkommas eingeschlossen werden
 
 ## Fehler
 Sollte bem Setzen des Sendungsstatus ein fehler auftreten, wird für den entsprechenden PayPal TransaktionsCode ein 
