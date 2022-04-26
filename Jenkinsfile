@@ -45,7 +45,7 @@ pipeline {
                     // for Windows
                     //sh 'docker run --rm -e PYTHONDONTWRITEBYTECODE=1 -v "\$(pwd):/src" ${IMAGE} "pyinstaller -F ./src/pp_tracking_id.py"'
                     // should work for Windows _and_ Linux
-                    sh 'docker run  --rm -e PYTHONDONTWRITEBYTECODE=1 -v "\$(pwd):/src" ${IMAGE} "pyinstaller --onefile --noconsole ./src/pp_tracking_id.py"'
+                    sh 'docker run  --rm -e PYTHONDONTWRITEBYTECODE=1 -v "\$(pwd):/src" ${IMAGE} "pyinstaller --onefile ./src/pp_tracking_id.py"'
 
                 }
             post {
